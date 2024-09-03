@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import Main from "../Pages/Home/Main";
+import ErrorElement from "../Components/Sheared/ErrorElement";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Main />,
+    errorElement: <ErrorElement />,
   },
 ]);
 
