@@ -3,6 +3,7 @@ import Main from "../Pages/Home/Main";
 import ErrorElement from "../Components/Sheared/ErrorElement";
 import Home from "../Layouts/Home/Home";
 import Register from "../Layouts/Authentication/Register";
+import Login from "../Layouts/Authentication/Login";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

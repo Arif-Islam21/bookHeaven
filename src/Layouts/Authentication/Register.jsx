@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
+import logo from "/bookHeaven.svg";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -16,29 +18,22 @@ const Register = () => {
 
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white py-12 dark:bg-gray-900">
         <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
             <div className="flex justify-center mx-auto">
-              <img
-                className="w-auto h-7 sm:h-8"
-                src="https://merakiui.com/images/logo.svg"
-                alt=""
-              />
+              <img className="w-auto h-12 sm:h-8" src={logo} alt="" />
             </div>
 
             <div className="flex items-center justify-center mt-6">
-              <a
-                href="#"
+              <Link
+                to={"/login"}
                 className="w-1/3 pb-4 font-medium text-center text-gray-500 capitalize border-b dark:border-gray-400 dark:text-gray-300"
               >
                 sign in
-              </a>
+              </Link>
 
-              <a
-                href="#"
-                className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
-              >
+              <a className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
                 sign up
               </a>
             </div>
@@ -176,15 +171,6 @@ const Register = () => {
               <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                 Sign Up
               </button>
-
-              <div className="mt-6 text-center ">
-                <a
-                  href="#"
-                  className="text-sm text-blue-500 hover:underline dark:text-blue-400"
-                >
-                  Already have an account?
-                </a>
-              </div>
             </div>
           </form>
         </div>
