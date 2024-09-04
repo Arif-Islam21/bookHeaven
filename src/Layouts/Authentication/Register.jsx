@@ -1,11 +1,26 @@
-import React from "react";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+  const { register, handleSubmit } = useForm();
+  const { registerUser } = useContext(AuthContext);
+
+  const onSubmit = async (formData) => {
+    const { email, password } = formData;
+    try {
+      const { user } = await registerUser(email, password);
+      console.log(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
         <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-          <form className="w-full max-w-md">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
             <div className="flex justify-center mx-auto">
               <img
                 className="w-auto h-7 sm:h-8"
@@ -49,6 +64,7 @@ const Register = () => {
               </span>
 
               <input
+                {...register("userName")}
                 type="text"
                 className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Username"
@@ -73,6 +89,7 @@ const Register = () => {
               </span>
 
               <input
+                {...register("photoUrl")}
                 type="text"
                 className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Photo Url"
@@ -98,6 +115,7 @@ const Register = () => {
               </span>
 
               <input
+                {...register("email")}
                 type="email"
                 className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Email address"
@@ -123,6 +141,7 @@ const Register = () => {
               </span>
 
               <input
+                {...register("password")}
                 type="password"
                 className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Password"
@@ -148,6 +167,7 @@ const Register = () => {
               </span>
 
               <input
+                {...register("confermPass")}
                 type="password"
                 className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Confirm Password"
