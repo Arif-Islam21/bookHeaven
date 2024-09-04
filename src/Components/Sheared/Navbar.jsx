@@ -4,7 +4,7 @@ import logo from "/bookHeaven.svg";
 
 const Navbar = () => {
   const links = (
-    <>
+    <div className="gap-2 justify-center items-center flex">
       <li>
         <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
           Add Book
@@ -20,7 +20,7 @@ const Navbar = () => {
           Borrowed Books
         </button>
       </li>
-    </>
+    </div>
   );
 
   return (
