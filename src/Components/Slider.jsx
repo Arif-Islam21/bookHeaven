@@ -1,6 +1,10 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import slide1 from "../../public/slide1.jpg";
+import slide2 from "../../public/slide2.jfif";
+import slide3 from "../../public/slide3.jfif";
+import slide4 from "../../public/slide4.jfif";
 
 // Import Swiper styles
 import "swiper/css";
@@ -26,17 +30,24 @@ export default function Slider() {
         }}
         navigation={true}
         modules={[Pagination, Autoplay, Navigation]}
-        className="mySwiper min-h-[65vh]"
+        className="mySwiper min-h-[70vh]"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <img className="max-h-[70vh] w-full" src={slide1} loading="lazy" />
+          <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="max-h-[70vh] w-full" src={slide2} loading="lazy" />
+          <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="max-h-[70vh] w-full" src={slide3} loading="lazy" />
+          <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="max-h-[70vh] w-full" src={slide4} loading="lazy" />
+          <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </SwiperSlide>
       </Swiper>
     </>
   );
