@@ -1,11 +1,9 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../Provider/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const { registerUser } = useContext(AuthContext);
-
+  const { registerUser } = useAuth();
   const onSubmit = async (formData) => {
     const { email, password } = formData;
     try {
