@@ -1,5 +1,6 @@
 import { FaBookOpen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import logo from "/bookHeaven.svg";
 
 const Navbar = () => {
   const links = (
@@ -53,7 +54,8 @@ const Navbar = () => {
           to={"/"}
           className="top-0 bottom-0 left-0 h-full border-2 flex items-center gap-3 px-4 rounded-md rounded-tr-[42px] absolute  bg-deepGreen text-themeColor text-xl"
         >
-          <FaBookOpen /> <span className="font-merriWeather">BookHeaven</span>
+          <img className="h-12 w-16 bg-deepGreen" src={logo} alt="" />{" "}
+          <span className="font-merriWeather">BookHeaven</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
