@@ -5,11 +5,18 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const { registerUser } = useAuth();
+  const { registerUser, user, setUser } = useAuth();
   const onSubmit = async (formData) => {
-    const { email, password } = formData;
+    const { email, password, userName, photoUrl } = formData;
     try {
-      const { user } = await registerUser(email, password);
+      const createdUser = await registerUser(email, password);
+      console.log(createdUser.user);
+      const updatedUser = {
+        ...user,
+        displayName: userName,
+        photoURL: photoUrl,
+      };
+      setUser(updatedUser);
       console.log(user);
     } catch (error) {
       console.error(error);
@@ -33,7 +40,7 @@ const Register = () => {
                 sign in
               </Link>
 
-              <a className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
+              <a className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-lightGreen dark:border-lightGreen dark:text-white">
                 sign up
               </a>
             </div>
@@ -168,7 +175,7 @@ const Register = () => {
             </div>
 
             <div className="mt-6">
-              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-deepGreen rounded-lg hover:bg-lightGreen focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                 Sign Up
               </button>
             </div>

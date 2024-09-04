@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <div>
-      <section className="bg-white py-12 dark:bg-gray-900">
+      <section className="bg-white min-h-[60vh] py-12 dark:bg-gray-900">
         <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
             <div className="flex justify-center mx-auto">
@@ -26,7 +26,7 @@ const Login = () => {
             </div>
 
             <div className="flex items-center justify-center mt-6">
-              <a className="w-1/3 pb-4 font-medium text-center border-b-2 dark:border-blue-400 border-blue-500 text-gray-500 capitalize   dark:text-gray-300">
+              <a className="w-1/3 pb-4 font-medium text-center border-b-2 dark:border-deepGreen 0 border-deepGreen text-gray-500 capitalize   dark:text-gray-300">
                 sign in
               </a>
 
@@ -117,7 +117,7 @@ const Login = () => {
             </div>
 
             <div className="mt-6">
-              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-deepGreen rounded-lg hover:bg-lightGreen focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                 Sign In
               </button>
             </div>
