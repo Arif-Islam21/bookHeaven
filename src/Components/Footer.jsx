@@ -33,7 +33,7 @@ const Footer = () => {
               placeholder="username@site.com"
               className="input input-bordered join-item"
             />
-            <button className="btn btn-outline border-themeColor hover:border-deepGreen hover:bg-themeColor hover:text-deepGreen join-item">
+            <button className="btn btn-outline border-themeColor hover:border-deepGreen hover:bg-themeColor hover:text-deepGreen text-themeColor join-item">
               Subscribe
             </button>
           </div>
