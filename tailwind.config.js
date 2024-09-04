@@ -6,6 +6,7 @@ export default {
       colors: {
         themeColor: "#FAF9F6",
         deepGreen: "#02590F  ",
+        // [#012E4A]
       },
       fontFamily: {
         lora: '"Lora", system-ui',

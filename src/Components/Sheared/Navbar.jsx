@@ -1,20 +1,30 @@
 import { FaBookOpen } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
+          Add Book
+        </button>
       </li>
       <li>
-        <a>Item 3</a>
+        <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
+          All Books
+        </button>
+      </li>
+      <li>
+        <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
+          Borrowed Books
+        </button>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-themeColor max-w-6xl mx-auto px-12">
-      <div className="navbar-start">
+    <div className="navbar relative bg-themeColor pr-12">
+      <div className=" navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -39,9 +49,12 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className="btn bg-[#012E4A] text-themeColor text-xl">
+        <Link
+          to={"/"}
+          className="top-0 bottom-0 left-0 h-full border-2 flex items-center gap-3 px-4 rounded-md rounded-tr-[42px] absolute  bg-deepGreen text-themeColor text-xl"
+        >
           <FaBookOpen /> <span className="font-merriWeather">BookHeaven</span>
-        </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
