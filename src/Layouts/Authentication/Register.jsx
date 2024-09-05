@@ -7,16 +7,11 @@ const Register = () => {
   const { register, handleSubmit } = useForm();
   const { registerUser, user, setUser } = useAuth();
   const onSubmit = async (formData) => {
-    const { email, password, userName, photoUrl } = formData;
+    const { email, password, name, photo } = formData;
     try {
       const createdUser = await registerUser(email, password);
       console.log(createdUser.user);
-      const updatedUser = {
-        ...user,
-        displayName: userName,
-        photoURL: photoUrl,
-      };
-      setUser(updatedUser);
+      setUser({ ...createdUser?.user, photoURL: photo, displayName: name });
       console.log(user);
     } catch (error) {
       console.error(error);

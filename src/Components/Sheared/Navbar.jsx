@@ -6,17 +6,17 @@ const Navbar = () => {
   const links = (
     <div className="gap-2 justify-center items-center flex">
       <li>
-        <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
+        <button className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">
           Add Book
         </button>
       </li>
       <li>
-        <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
+        <button className="btn btn-outline border- text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">
           All Books
         </button>
       </li>
       <li>
-        <button className="btn btn-outline border-deepGreen hover:bg-deepGreen">
+        <button className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">
           Borrowed Books
         </button>
       </li>
@@ -27,7 +27,11 @@ const Navbar = () => {
     <div className="navbar relative bg-themeColor pr-12">
       <div className=" navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost z-[30] lg:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -45,14 +49,14 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[10] mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
         </div>
         <Link
           to={"/"}
-          className="top-0 bottom-0 left-0 h-full border-2 flex items-center gap-3 px-4 rounded-md rounded-tr-[42px] absolute  bg-deepGreen text-themeColor text-xl"
+          className="top-0 bottom-0 left-0 h-full border-2 flex items-center gap-3 px-4 rounded-md rounded-tr-3xl lg:rounded-tr-[42px] absolute  bg-deepGreen text-themeColor text-xl"
         >
           <img className="h-12 w-16 bg-deepGreen" src={logo} alt="" />{" "}
           <span className="font-merriWeather">BookHeaven</span>
@@ -84,7 +88,7 @@ const Navbar = () => {
           </div>
           <div
             tabIndex={0}
-            className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
+            className="card card-compact dropdown-content bg-base-100 z-[10] mt-3 w-52 shadow"
           >
             <div className="card-body">
               <span className="text-lg font-bold">8 Items</span>
@@ -110,7 +114,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[10] mt-3 w-52 p-2 shadow"
           >
             <li>
               <a className="justify-between">
