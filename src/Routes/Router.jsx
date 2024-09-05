@@ -4,6 +4,7 @@ import ErrorElement from "../Components/Sheared/ErrorElement";
 import Home from "../Layouts/Home/Home";
 import Register from "../Layouts/Authentication/Register";
 import Login from "../Layouts/Authentication/Login";
+import AddBook from "../Pages/AddBook/AddBook";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/addBook",
+        element: <AddBook />,
       },
     ],
   },

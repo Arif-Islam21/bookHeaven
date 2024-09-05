@@ -1,63 +1,52 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
 
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import "./styles.css";
-
-// import required modules
-import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import CategoryCard from "./CategoryCard";
 
 const BookCategories = () => {
   return (
-    <div className="bg-lightGreen px-24 py-12 my-16 min-h-[60vh]">
+    <div className="bg-lightGreen  px-24 py-12 my-16 min-h-[60vh]">
       <div className="">
         <h1 className="text-xl lg:text-4xl text-themeColor text-center">
           Top Categorys Books
         </h1>
-        <div>
+        <div className="border-2 px-8 py-4 pt-8">
           <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            Navigation={true}
+            // install Swiper modules
+            modules={[Pagination, Scrollbar, Autoplay, A11y]}
+            spaceBetween={50}
+            slidesPerView={3}
+            loop={true}
             autoplay={{
-              delay: 2500,
+              delay: 4500,
               disableOnInteraction: false,
             }}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-              },
-              1024: {
-                slidesPerView: 5,
-                spaceBetween: 50,
-              },
-            }}
-            modules={[Pagination, Autoplay, Navigation]}
-            className="mySwiper min-h-[50vh] py-6 border-2"
+            pagination={{ clickable: true }}
+            // scrollbar={{ draggable: true }}
+            // onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log("slide change")}
+            className="min-h-[50vh]"
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 5</SwiperSlide>
-            <SwiperSlide>Slide 6</SwiperSlide>
-            <SwiperSlide>Slide 7</SwiperSlide>
-            <SwiperSlide>Slide 8</SwiperSlide>
-            <SwiperSlide>Slide 9</SwiperSlide>
+            <SwiperSlide className=" h-full">
+              <CategoryCard />
+            </SwiperSlide>
+            <SwiperSlide className=" h-full">
+              <CategoryCard />
+            </SwiperSlide>
+            <SwiperSlide className=" h-full">
+              <CategoryCard />
+            </SwiperSlide>
+            <SwiperSlide className=" h-full">
+              <CategoryCard />
+            </SwiperSlide>
+            <SwiperSlide className=" h-full">
+              <CategoryCard />
+            </SwiperSlide>
           </Swiper>
         </div>
       </div>
