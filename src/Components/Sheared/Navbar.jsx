@@ -4,7 +4,7 @@ import logo from "/bookHeaven.svg";
 import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logoutUser } = useAuth();
   const links = (
     <div className="gap-2 justify-center items-center flex">
       <li>
@@ -139,7 +139,7 @@ const Navbar = () => {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <button onClick={logoutUser}>Logout</button>
                 </li>
               </ul>
             </div>
