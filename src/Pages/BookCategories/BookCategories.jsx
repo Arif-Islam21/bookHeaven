@@ -7,16 +7,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+// import "./styles.css";
+
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
 const BookCategories = () => {
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  };
   return (
     <div className="bg-lightGreen px-24 py-12 my-16 min-h-[60vh]">
       <div className="">
@@ -25,23 +21,43 @@ const BookCategories = () => {
         </h1>
         <div>
           <Swiper
-            spaceBetween={30}
-            centeredSlides={true}
+            slidesPerView={1}
+            spaceBetween={10}
+            Navigation={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
             }}
+            loop={true}
             pagination={{
               clickable: true,
             }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper min-h-[50vh]"
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination, Autoplay, Navigation]}
+            className="mySwiper min-h-[50vh] py-6 border-2"
           >
             <SwiperSlide>Slide 1</SwiperSlide>
             <SwiperSlide>Slide 2</SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide>Slide 5</SwiperSlide>
+            <SwiperSlide>Slide 6</SwiperSlide>
+            <SwiperSlide>Slide 7</SwiperSlide>
+            <SwiperSlide>Slide 8</SwiperSlide>
+            <SwiperSlide>Slide 9</SwiperSlide>
           </Swiper>
         </div>
       </div>
