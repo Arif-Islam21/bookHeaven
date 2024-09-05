@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddBook = () => {
   const {
@@ -9,15 +10,30 @@ const AddBook = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (bookData) => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_SERVER_URL}/addBook`,
-      bookData
-    );
-    console.log(data);
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/addBook`,
+        bookData
+      );
+      console.log(data);
+      if (data?.insertedId) {
+        Swal.fire({
+          title: "Adding Book Done",
+          text: "Book added succesfully to library",
+          icon: "success",
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Something went wrong",
+        text: "That thing is still around?",
+        icon: "question",
+      });
+    }
   };
   return (
-    <div>
-      <section className="p-4 lg:px-24 mx-auto bg-themeColor rounded-md shadow-md dark:bg-gray-800">
+    <div className="bg-themeColor">
+      <section className="p-4 my-12 lg:px-24 mx-auto bg-themeColor rounded-md shadow-md dark:bg-gray-800">
         <div>
           <h2 className="text-lg text-center font-semibold text-gray-700 capitalize dark:text-themeColor">
             Add Book
@@ -152,7 +168,7 @@ const AddBook = () => {
           </div>
 
           <div className="flex justify-end mt-6">
-            <button className="px-8 btn btn-block border-none py-2.5 leading-5 text-themeColor transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <button className="flex items-center btn btn-block bg-lightGreen text-themeColor justify-center mt-4 transition-colors duration-300 transform border rounded-lg dark:border-deepGreen dark:text-themeColor hover:text-themeColor hover:bg-deepGreen dark:hover:bg-deepGreen">
               Add Book
             </button>
           </div>
