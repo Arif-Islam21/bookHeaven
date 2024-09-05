@@ -6,7 +6,7 @@ export default {
       colors: {
         themeColor: "#FAF9F6",
         deepGreen: "#02590F",
-        lightGreen: "#337F3D",
+        lightGreen: "#61AB7A",
         // [#012E4A]
       },
       fontFamily: {
