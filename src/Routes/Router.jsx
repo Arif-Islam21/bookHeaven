@@ -5,6 +5,7 @@ import Home from "../Layouts/Home/Home";
 import Register from "../Layouts/Authentication/Register";
 import Login from "../Layouts/Authentication/Login";
 import AddBook from "../Pages/AddBook/AddBook";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBook",
-        element: <AddBook />,
+        element: (
+          <PrivateRoute>
+            <AddBook />
+          </PrivateRoute>
+        ),
       },
     ],
   },
