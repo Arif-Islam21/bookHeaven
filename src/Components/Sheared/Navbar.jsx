@@ -6,9 +6,12 @@ const Navbar = () => {
   const links = (
     <div className="gap-2 justify-center items-center flex">
       <li>
-        <button className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">
+        <Link
+          to={"/addBook"}
+          className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+        >
           Add Book
-        </button>
+        </Link>
       </li>
       <li>
         <button className="btn btn-outline border- text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">

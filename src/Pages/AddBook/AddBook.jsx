@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const AddBook = () => {
   const {
@@ -7,7 +8,13 @@ const AddBook = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.table(data);
+  const onSubmit = async (bookData) => {
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_SERVER_URL}/addBook`,
+      bookData
+    );
+    console.log(data);
+  };
   return (
     <div>
       <section className="p-4 lg:px-24 mx-auto bg-themeColor rounded-md shadow-md dark:bg-gray-800">
