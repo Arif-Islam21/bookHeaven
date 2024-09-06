@@ -22,7 +22,14 @@ const CategoryCard = ({ card }) => {
         </div>
         <Rating
           initialRating={rating}
-          emptySymbol={<FaStar color="#02590F" size={32} className="mr-2" />}
+          emptySymbol={
+            <FaStar
+              color="#ffffff"
+              initialRating={rating}
+              size={32}
+              className="mr-2"
+            />
+          }
           fullSymbol={<FaStar color="#02590F" size={32} />}
         />
         <div className="card-actions justify-end">
