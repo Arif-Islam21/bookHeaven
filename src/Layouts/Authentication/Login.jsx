@@ -1,17 +1,21 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import logo from "/bookHeaven.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const { logInUser, googleLogin } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || "/";
 
   const onSubmit = async (formData) => {
     const { email, password } = formData;
     try {
       const { user } = await logInUser(email, password);
       console.log(user);
+      navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
     }
@@ -20,6 +24,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
+        navigate(from, { replace: true });
         console.log(res.user);
       })
       .catch((err) => {
