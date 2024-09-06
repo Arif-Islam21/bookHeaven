@@ -7,6 +7,7 @@ import Login from "../Layouts/Authentication/Login";
 import AddBook from "../Pages/AddBook/AddBook";
 import PrivateRoute from "./PrivateRoute";
 import Category from "../Components/Sheared/Category";
+import BookDetails from "../Pages/BookDetails/BookDetails";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ const router = createBrowserRouter([
           fetch(
             `${import.meta.env.VITE_SERVER_URL}/bookCategory/${params.category}`
           ),
+      },
+      {
+        path: "/category/:id",
+        element: <BookDetails />,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_SERVER_URL}/category/${params.id}`),
       },
     ],
   },

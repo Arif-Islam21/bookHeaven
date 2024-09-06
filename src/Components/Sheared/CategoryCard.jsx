@@ -1,9 +1,10 @@
 import Rating from "react-rating";
 import { FaStar } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const CategoryCard = ({ card }) => {
-  const { author, bookName, category, photo, rating } = card;
+  const { _id, author, bookName, category, photo, rating } = card;
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure className="border-b-2 border-deepGreen">
@@ -25,11 +26,15 @@ const CategoryCard = ({ card }) => {
           initialRating={rating}
           emptySymbol={<CiStar color="#02590F" size={32} className="mr-2" />}
           fullSymbol={<FaStar color="#02590F" size={32} />}
+          readonly
         />
         <div className="card-actions justify-end">
-          <button className="btn bg-deepGreen delay-300  hover:bg-lightGreen text-themeColor ">
+          <Link
+            to={`/category/${_id}`}
+            className="btn bg-deepGreen delay-300  hover:bg-lightGreen text-themeColor"
+          >
             Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
