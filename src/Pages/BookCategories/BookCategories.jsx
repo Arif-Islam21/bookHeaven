@@ -26,13 +26,13 @@ const BookCategories = () => {
         <h1 className="text-xl lg:text-4xl text-themeColor text-center">
           Top Categorys Books
         </h1>
-        <div className="border-2 px-8 py-4 pt-8">
+        <div className=" lg:px-8 lg:py-4 lg:pt-8">
           {bookData.length && (
             <Swiper
               // install Swiper modules
               modules={[Pagination, Scrollbar, Autoplay, A11y]}
               spaceBetween={50}
-              slidesPerView={3}
+              slidesPerView={1}
               slidesPerGroup={1}
               loop={true}
               autoplay={{
@@ -43,7 +43,21 @@ const BookCategories = () => {
               // scrollbar={{ draggable: true }}
               // onSwiper={(swiper) => console.log(swiper)}
               // onSlideChange={() => console.log("slide change")}
-              className="lg:min-h-[50vh]"
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+              }}
+              className="lg:min-h-[50vh] min-h-[60vh]"
             >
               {bookData?.map((book) => (
                 <SwiperSlide key={book._id} className=" h-full">
