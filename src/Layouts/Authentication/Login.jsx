@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const { logInUser, googleLogin } = useAuth();
+
   const onSubmit = async (formData) => {
     const { email, password } = formData;
     try {
@@ -18,8 +19,12 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((res) => console.log(res.user))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
