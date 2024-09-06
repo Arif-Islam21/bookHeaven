@@ -1,5 +1,6 @@
 import Rating from "react-rating";
 import { FaStar } from "react-icons/fa6";
+import { CiStar } from "react-icons/ci";
 
 const CategoryCard = ({ card }) => {
   const { author, bookName, category, photo, rating } = card;
@@ -22,14 +23,7 @@ const CategoryCard = ({ card }) => {
         </div>
         <Rating
           initialRating={rating}
-          emptySymbol={
-            <FaStar
-              color="#ffffff"
-              initialRating={rating}
-              size={32}
-              className="mr-2"
-            />
-          }
+          emptySymbol={<CiStar color="#02590F" size={32} className="mr-2" />}
           fullSymbol={<FaStar color="#02590F" size={32} />}
         />
         <div className="card-actions justify-end">
