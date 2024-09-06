@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CategoryCard = ({ book }) => {
   const { category, photo } = book;
   return (
@@ -7,9 +9,12 @@ const CategoryCard = ({ book }) => {
           <img className="rounded-lg p-4 max-h-40 w-auto" src={photo} />
         </div>
       </div>
-      <h2 className="my-4 text-center text-xl font-semibold text-deepGreen">
+      <Link
+        to={`/bookCategory/${category}`}
+        className="my-4 text-center text-xl font-semibold text-deepGreen"
+      >
         {category}
-      </h2>
+      </Link>
     </div>
   );
 };
