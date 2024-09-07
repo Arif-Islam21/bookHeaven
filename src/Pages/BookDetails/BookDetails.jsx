@@ -113,7 +113,10 @@ const BookDetails = () => {
                     <button className="btn btn-outline border-red-600 text-red-600 hover:text-themeColor hover:bg-red-600 px-6">
                       Cancel
                     </button>
-                    <button className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6">
+                    <button
+                      disabled={quantity <= 0}
+                      className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6"
+                    >
                       Borrow
                     </button>
                   </form>

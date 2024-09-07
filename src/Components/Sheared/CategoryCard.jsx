@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const CategoryCard = ({ card }) => {
   const { _id, author, bookName, category, photo, rating } = card;
+
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure className="border-b-2 border-deepGreen">

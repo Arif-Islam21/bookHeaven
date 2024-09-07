@@ -37,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/bookCategory/:category",
-        element: <Category />,
+        element: (
+          <PrivateRoute>
+            <Category />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `${import.meta.env.VITE_SERVER_URL}/bookCategory/${params.category}`
@@ -45,7 +49,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        element: <BookDetails />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <BookDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_SERVER_URL}/category/${params.id}`),
       },
