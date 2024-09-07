@@ -51,7 +51,6 @@ const router = createBrowserRouter([
         path: "/category/:id",
         element: (
           <PrivateRoute>
-            {" "}
             <BookDetails />
           </PrivateRoute>
         ),

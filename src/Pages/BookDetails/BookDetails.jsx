@@ -5,10 +5,17 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const BookDetails = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const data = useLoaderData();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
@@ -24,10 +31,12 @@ const BookDetails = () => {
     more,
   } = data;
 
+  const onSubmit = (data) => console.log(data);
+
   const handleBorrowBook = (id) => {
-    axios.patch(`${import.meta.env.VITE_SERVER_URL}/borrow/${id}`, {
-      quantity,
-    });
+    // axios.post(`${import.meta.env.VITE_SERVER_URL}/borrow/${id}`, {
+    //   quantity,
+    // });
   };
   return (
     <div className="hero bg-lightGreen min-h-screen">
@@ -80,13 +89,17 @@ const BookDetails = () => {
             >
               <div className="modal-box border-2 border-deepGreen">
                 <h3 className="font-bold text-lg">Borrow {bookName}</h3>
-                <form className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-4"
+                >
                   <label className="form-control w-full max-w-xs">
                     <div className="label">
                       <span className="label-text">Name</span>
                     </div>
                     <input
                       type="text"
+                      {...register("name")}
                       placeholder="Type here"
                       defaultValue={user?.displayName}
                       disabled
@@ -99,6 +112,7 @@ const BookDetails = () => {
                     </div>
                     <input
                       type="text"
+                      {...register("email")}
                       placeholder="Type here"
                       defaultValue={user?.email}
                       disabled
@@ -115,21 +129,21 @@ const BookDetails = () => {
                       onChange={(date) => setStartDate(date)}
                     />
                   </label>
+                  <div className="flex col-span-2 justify-around mt-6">
+                    <div method="dialog" className="flex justify-around gap-12">
+                      <button className="btn btn-outline border-red-600 text-red-600 hover:text-themeColor hover:bg-red-600 px-6">
+                        Cancel
+                      </button>
+                      <button
+                        onClick={() => handleBorrowBook(_id)}
+                        disabled={quantity <= 0}
+                        className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6"
+                      >
+                        Borrow
+                      </button>
+                    </div>
+                  </div>
                 </form>
-                <div className="flex justify-around mt-6">
-                  <form method="dialog" className="flex justify-around gap-12">
-                    <button className="btn btn-outline border-red-600 text-red-600 hover:text-themeColor hover:bg-red-600 px-6">
-                      Cancel
-                    </button>
-                    <button
-                      onClick={() => handleBorrowBook(_id)}
-                      disabled={quantity <= 0}
-                      className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6"
-                    >
-                      Borrow
-                    </button>
-                  </form>
-                </div>
               </div>
             </dialog>
           </div>
