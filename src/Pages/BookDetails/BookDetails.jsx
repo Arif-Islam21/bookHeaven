@@ -6,12 +6,14 @@ import useAuth from "../../Hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import axios from "axios";
 
 const BookDetails = () => {
   const data = useLoaderData();
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const {
+    _id,
     bookName,
     photo,
     quantity,
@@ -21,6 +23,12 @@ const BookDetails = () => {
     rating,
     more,
   } = data;
+
+  const handleBorrowBook = (id) => {
+    axios.patch(`${import.meta.env.VITE_SERVER_URL}/borrow/${id}`, {
+      quantity,
+    });
+  };
   return (
     <div className="hero bg-lightGreen min-h-screen">
       <div className="hero-content bg-themeColor min-h-[60vh] rounded-lg mx-24 flex-col lg:flex-row">
@@ -114,6 +122,7 @@ const BookDetails = () => {
                       Cancel
                     </button>
                     <button
+                      onClick={() => handleBorrowBook(_id)}
                       disabled={quantity <= 0}
                       className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6"
                     >
