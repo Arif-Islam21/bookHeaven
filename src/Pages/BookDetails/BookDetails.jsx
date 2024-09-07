@@ -25,19 +25,27 @@ const BookDetails = () => {
     more,
   } = data;
 
-  const handleModalData = (e) => {
-    e.preventDefault();
+  const handleBorrowBook = async (id) => {
     const name = user?.displayName;
     const email = user?.email;
     const deadline = new Date(startDate).toLocaleDateString();
-    const formData = { name, email, deadline, data };
-    setBorrowData(formData);
-  };
+    const formData = {
+      name,
+      email,
+      deadline,
+      bookName,
+      photo,
+      quantity,
+      author,
+      category,
+      shortDescription,
+      rating,
+      more,
+    };
 
-  const handleBorrowBook = async (id) => {
     const res = await axios.post(
       `${import.meta.env.VITE_SERVER_URL}/borrow/${id}`,
-      borrowData
+      formData
     );
     console.log(res.data);
   };
@@ -92,10 +100,7 @@ const BookDetails = () => {
             >
               <div className="modal-box border-2 border-deepGreen">
                 <h3 className="font-bold text-lg">Borrow {bookName}</h3>
-                <form
-                  onSubmit={handleModalData}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-4"
-                >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   <label className="form-control w-full max-w-xs">
                     <div className="label">
                       <span className="label-text">Name</span>
@@ -140,14 +145,14 @@ const BookDetails = () => {
                       </button>
                       <button
                         onClick={() => handleBorrowBook(_id)}
-                        disabled={quantity <= 0}
+                        // disabled={quantity <= 0}
                         className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6"
                       >
                         Borrow
                       </button>
                     </form>
                   </div>
-                </form>
+                </div>
               </div>
             </dialog>
           </div>
