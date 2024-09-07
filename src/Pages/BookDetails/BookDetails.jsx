@@ -7,11 +7,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const data = useLoaderData();
   const [startDate, setStartDate] = useState(new Date());
-  const [borrowData, setBorrowData] = useState([]);
   const { user } = useAuth();
   const {
     _id,
@@ -43,11 +43,24 @@ const BookDetails = () => {
       more,
     };
 
-    const res = await axios.post(
-      `${import.meta.env.VITE_SERVER_URL}/borrow/${id}`,
-      formData
-    );
-    console.log(res.data);
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/borrow/${id}`,
+        formData
+      );
+      console.log(res.data);
+      Swal.fire({
+        title: `${res.data.message}`,
+        text: "That thing is still around?",
+        icon: "warning",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: `${error.message}`,
+        text: "That thing is still around?",
+        icon: "error",
+      });
+    }
   };
   return (
     <div className="hero bg-lightGreen min-h-screen">
@@ -145,7 +158,7 @@ const BookDetails = () => {
                       </button>
                       <button
                         onClick={() => handleBorrowBook(_id)}
-                        // disabled={quantity <= 0}
+                        disabled={quantity <= 0}
                         className="btn border-deepGreen text-deepGreen hover:text-themeColor hover:bg-deepGreen px-6"
                       >
                         Borrow
