@@ -5,19 +5,13 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useForm } from "react-hook-form";
 
 const BookDetails = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
   const data = useLoaderData();
   const [startDate, setStartDate] = useState(new Date());
+  const [borrowData, setBorrowData] = useState([]);
   const { user } = useAuth();
   const {
     _id,
@@ -31,12 +25,21 @@ const BookDetails = () => {
     more,
   } = data;
 
-  const onSubmit = (data) => console.log(data);
+  const handleModalData = (e) => {
+    e.preventDefault();
+    const name = user?.displayName;
+    const email = user?.email;
+    const deadline = new Date(startDate).toLocaleDateString();
+    const formData = { name, email, deadline, data };
+    setBorrowData(formData);
+  };
 
-  const handleBorrowBook = (id) => {
-    // axios.post(`${import.meta.env.VITE_SERVER_URL}/borrow/${id}`, {
-    //   quantity,
-    // });
+  const handleBorrowBook = async (id) => {
+    const res = await axios.post(
+      `${import.meta.env.VITE_SERVER_URL}/borrow/${id}`,
+      borrowData
+    );
+    console.log(res.data);
   };
   return (
     <div className="hero bg-lightGreen min-h-screen">
@@ -90,7 +93,7 @@ const BookDetails = () => {
               <div className="modal-box border-2 border-deepGreen">
                 <h3 className="font-bold text-lg">Borrow {bookName}</h3>
                 <form
-                  onSubmit={handleSubmit(onSubmit)}
+                  onSubmit={handleModalData}
                   className="grid grid-cols-1 lg:grid-cols-2 gap-4"
                 >
                   <label className="form-control w-full max-w-xs">
@@ -99,7 +102,6 @@ const BookDetails = () => {
                     </div>
                     <input
                       type="text"
-                      {...register("name")}
                       placeholder="Type here"
                       defaultValue={user?.displayName}
                       disabled
@@ -112,7 +114,6 @@ const BookDetails = () => {
                     </div>
                     <input
                       type="text"
-                      {...register("email")}
                       placeholder="Type here"
                       defaultValue={user?.email}
                       disabled
@@ -130,7 +131,10 @@ const BookDetails = () => {
                     />
                   </label>
                   <div className="flex col-span-2 justify-around mt-6">
-                    <div method="dialog" className="flex justify-around gap-12">
+                    <form
+                      method="dialog"
+                      className="flex justify-around gap-12"
+                    >
                       <button className="btn btn-outline border-red-600 text-red-600 hover:text-themeColor hover:bg-red-600 px-6">
                         Cancel
                       </button>
@@ -141,7 +145,7 @@ const BookDetails = () => {
                       >
                         Borrow
                       </button>
-                    </div>
+                    </form>
                   </div>
                 </form>
               </div>
