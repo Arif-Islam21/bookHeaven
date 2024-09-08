@@ -51,13 +51,13 @@ const BookDetails = () => {
       console.log(res.data);
       Swal.fire({
         title: `${res.data.message}`,
-        text: "That thing is still around?",
-        icon: "warning",
+        text: "Book Borrowed Succesfully",
+        icon: "success",
       });
     } catch (error) {
       Swal.fire({
         title: `${error.message}`,
-        text: "That thing is still around?",
+        text: "Book did not borrowed",
         icon: "error",
       });
     }
