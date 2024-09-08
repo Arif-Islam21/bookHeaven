@@ -16,7 +16,6 @@ const BorrowCard = ({ card, borrowData, setBorrowData }) => {
     );
     console.log(incrementData.data, deleteDate.data);
     const remaining = borrowData.filter((book) => book._id !== id);
-    console.log(remaining);
     setBorrowData(remaining);
   };
 
