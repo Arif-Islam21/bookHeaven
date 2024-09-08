@@ -33,7 +33,7 @@ const AddBook = () => {
   };
   return (
     <div className="bg-lightGreen">
-      <section className="p-4 py-12 lg:px-24 mx-auto bg-lightGreen rounded-md shadow-md ">
+      <section className="p-4 py-12 lg:px-24 mx-auto bg-lightGreen rounded-md ">
         <div>
           <h2 className="text-lg text-center font-semibold text-gray-700 capitalize ">
             Add Book
@@ -95,7 +95,7 @@ const AddBook = () => {
                 Category
               </label>
               <select
-                className="select text-white bg-deepGreen border-gray-600 w-full"
+                className="select bg-themeColor text-deepGreen w-full"
                 name="category"
                 {...register("category")}
                 id="category"
@@ -145,13 +145,12 @@ const AddBook = () => {
           </div>
 
           <div className="flex justify-end mt-6">
-            <button className="flex items-center btn btn-block bg-lightGreen text-themeColor justify-center mt-4 transition-colors duration-300 transform border rounded-lg  hover:text-themeColor hover:bg-deepGreen">
+            <button className="flex items-center btn btn-block bg-deepGreen hover:bg-lightGreen text-themeColor justify-center mt-4 transition-colors duration-300 transform border-none rounded-lg  hover:text-themeColor">
               Add Book
             </button>
           </div>
         </form>
       </section>
-      ;
     </div>
   );
 };

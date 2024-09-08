@@ -16,9 +16,12 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <button className="btn btn-outline border- text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">
+        <Link
+          to={"/allBooks"}
+          className="btn btn-outline border- text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+        >
           All Books
-        </button>
+        </Link>
       </li>
       <li>
         <Link
