@@ -21,9 +21,12 @@ const Navbar = () => {
         </button>
       </li>
       <li>
-        <button className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen">
+        <Link
+          to={`/borrowedBook/${user?.email}`}
+          className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+        >
           Borrowed Books
-        </button>
+        </Link>
       </li>
     </div>
   );

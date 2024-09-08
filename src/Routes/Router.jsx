@@ -8,6 +8,7 @@ import AddBook from "../Pages/AddBook/AddBook";
 import PrivateRoute from "./PrivateRoute";
 import Category from "../Components/Sheared/Category";
 import BookDetails from "../Pages/BookDetails/BookDetails";
+import BorrowedBook from "../Pages/BorrowedBook/BorrowedBook";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_SERVER_URL}/category/${params.id}`),
+      },
+      {
+        path: "/borrowedBook/:email",
+        element: <BorrowedBook />,
+        loader: ({ params }) =>
+          fetch(
+            `${import.meta.env.VITE_SERVER_URL}/borrowedBook/${params.email}`
+          ),
       },
     ],
   },
