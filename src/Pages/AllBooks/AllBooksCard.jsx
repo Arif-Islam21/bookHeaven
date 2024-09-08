@@ -1,9 +1,10 @@
 import Rating from "react-rating";
 import { FaStar } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const AllBooksCard = ({ card }) => {
-  const { _id, author, bookName, deadline, category, photo, rating } = card;
+  const { _id, author, bookName, category, photo, rating } = card;
 
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
@@ -14,8 +15,8 @@ const AllBooksCard = ({ card }) => {
         <h2 className="card-title">{bookName}</h2>
         <div className="flex justify-between items-center">
           <p>
-            <span className="text-deepGreen font-bold">Return Date :</span>{" "}
-            <span>{deadline}</span>
+            <span className="text-deepGreen font-bold">Author :</span>{" "}
+            <span>{author}</span>
           </p>
           <p>
             <span className="text-deepGreen font-bold">Category :</span>{" "}
@@ -29,9 +30,12 @@ const AllBooksCard = ({ card }) => {
           readonly
         />
         <div className="card-actions justify-end">
-          <button className="btn bg-deepGreen delay-300  hover:bg-lightGreen text-themeColor">
-            Return
-          </button>
+          <Link
+            to={`/update/${_id}`}
+            className="btn bg-deepGreen delay-300  hover:bg-lightGreen text-themeColor"
+          >
+            Update
+          </Link>
         </div>
       </div>
     </div>
