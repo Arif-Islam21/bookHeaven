@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateBook = () => {
   const {
@@ -12,6 +13,10 @@ const UpdateBook = () => {
   const onSubmit = (bookData) => {
     console.log(bookData);
   };
+
+  const updateData = useLoaderData();
+  console.log(updateData);
+
   return (
     <div className="bg-lightGreen">
       <section className="p-4 py-12 lg:px-24 mx-auto bg-lightGreen rounded-md ">

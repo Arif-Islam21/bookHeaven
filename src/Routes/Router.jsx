@@ -80,6 +80,8 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateBook />,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_SERVER_URL}/category/${params.id}`),
       },
     ],
   },
