@@ -1,8 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import BorrowCard from "./BorrowCard";
+import { useEffect, useState } from "react";
 
 const BorrowedBook = () => {
+  const [borrowData, setBorrowData] = useState([]);
   const data = useLoaderData();
+  useEffect(() => {
+    if (data) {
+      setBorrowData(data);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -17,8 +24,13 @@ const BorrowedBook = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 mx-4">
-        {data?.map((card) => (
-          <BorrowCard key={card._id} card={card} />
+        {borrowData?.map((card) => (
+          <BorrowCard
+            key={card._id}
+            card={card}
+            borrowData={borrowData}
+            setBorrowData={setBorrowData}
+          />
         ))}
       </div>
     </div>

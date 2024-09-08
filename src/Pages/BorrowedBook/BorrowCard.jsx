@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
 import axios from "axios";
 
-const BorrowCard = ({ card }) => {
+const BorrowCard = ({ card, borrowData, setBorrowData }) => {
   const { _id, author, bookName, deadline, category, photo, rating } = card;
 
   const handleReturnBook = async (id, bookName) => {
@@ -15,6 +15,9 @@ const BorrowCard = ({ card }) => {
       `${import.meta.env.VITE_SERVER_URL}/return/${id}`
     );
     console.log(incrementData.data, deleteDate.data);
+    const remaining = borrowData.filter((book) => book._id !== id);
+    console.log(remaining);
+    setBorrowData(remaining);
   };
 
   return (
