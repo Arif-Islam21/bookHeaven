@@ -6,11 +6,15 @@ import axios from "axios";
 const BorrowCard = ({ card }) => {
   const { _id, author, bookName, deadline, category, photo, rating } = card;
 
-  const handleReturnBook = async (id) => {
-    const { data } = await axios.post(
+  const handleReturnBook = async (id, bookName) => {
+    const incrementData = await axios.patch(
+      `${import.meta.env.VITE_SERVER_URL}/increment/${bookName}`,
+      { author }
+    );
+    const deleteDate = await axios.delete(
       `${import.meta.env.VITE_SERVER_URL}/return/${id}`
     );
-    console.log(data);
+    console.log(incrementData.data, deleteDate.data);
   };
 
   return (
@@ -38,7 +42,7 @@ const BorrowCard = ({ card }) => {
         />
         <div className="card-actions justify-end">
           <button
-            onClick={() => handleReturnBook(_id)}
+            onClick={() => handleReturnBook(_id, bookName)}
             className="btn bg-deepGreen delay-300  hover:bg-lightGreen text-themeColor"
           >
             Return

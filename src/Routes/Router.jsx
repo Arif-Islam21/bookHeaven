@@ -60,7 +60,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/borrowedBook/:email",
-        element: <BorrowedBook />,
+        element: (
+          <PrivateRoute>
+            <BorrowedBook />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `${import.meta.env.VITE_SERVER_URL}/borrowedBook/${params.email}`
