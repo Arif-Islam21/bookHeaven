@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import logo from "/bookHeaven.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -15,20 +16,40 @@ const Login = () => {
     try {
       const { user } = await logInUser(email, password);
       console.log(user);
+      Swal.fire({
+        title: "Logged In",
+        text: "You have logged in Succesfully",
+        icon: "success",
+      });
       navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
+      Swal.fire({
+        title: "Not logged in",
+        text: "there is something wrong",
+        icon: "question",
+      });
     }
   };
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
+        Swal.fire({
+          title: "Logged In",
+          text: "You have logged in Succesfully",
+          icon: "success",
+        });
         navigate(from, { replace: true });
         console.log(res.user);
       })
       .catch((err) => {
         console.error(err);
+        Swal.fire({
+          title: "Not logged in",
+          text: "there is something wrong",
+          icon: "question",
+        });
       });
   };
 

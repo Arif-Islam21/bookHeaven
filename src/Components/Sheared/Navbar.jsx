@@ -2,9 +2,18 @@ import { FaBookOpen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import logo from "/bookHeaven.svg";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
+  const handleLogout = () => {
+    logoutUser();
+    Swal.fire({
+      title: "Logged Out",
+      text: "You have logged out Succesfully",
+      icon: "success",
+    });
+  };
   const links = (
     <div className="gap-2 justify-center items-center flex">
       <li>
@@ -162,7 +171,7 @@ const Navbar = () => {
                 <li>
                   <button
                     className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
-                    onClick={logoutUser}
+                    onClick={handleLogout}
                   >
                     Logout
                   </button>
