@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const UpdateBook = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -12,16 +13,22 @@ const UpdateBook = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (bookData) => {
-    console.log(bookData);
     const res = await axios.post(
       `${import.meta.env.VITE_SERVER_URL}/updateBook/${updateData._id}`,
       bookData
     );
-    console.log(res);
+    console.log(res.data);
+    if (res.data.modifiedCount > 0) {
+      Swal.fire({
+        title: "Updated Succesfully",
+        text: "You have updated your book",
+        icon: "success",
+      });
+    }
+    navigate("/allBooks");
   };
 
   const updateData = useLoaderData();
-  console.log(updateData);
 
   return (
     <div className="bg-lightGreen min-h-screen">
