@@ -11,8 +11,13 @@ const UpdateBook = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (bookData) => {
+  const onSubmit = async (bookData) => {
     console.log(bookData);
+    const res = await axios.post(
+      `${import.meta.env.VITE_SERVER_URL}/updateBook/${updateData._id}`,
+      bookData
+    );
+    console.log(res);
   };
 
   const updateData = useLoaderData();
