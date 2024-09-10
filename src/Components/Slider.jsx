@@ -30,7 +30,7 @@ export default function Slider() {
         }}
         navigation={true}
         modules={[Pagination, Autoplay, Navigation]}
-        className="mySwiper min-h-[70vh]"
+        className="mySwiper "
       >
         <SwiperSlide>
           <img className="max-h-[70vh] w-full" src={slide1} loading="lazy" />

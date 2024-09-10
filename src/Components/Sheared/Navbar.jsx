@@ -79,7 +79,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {user && (
           <div className="flex items-center gap-4">
-            <div className="dropdown dropdown-end">
+            {/* <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
@@ -117,7 +117,7 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -133,16 +133,39 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[10] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 gap-y-2 rounded-box z-[10] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">Profile</a>
+                  <Link
+                    to={"/addBook"}
+                    className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+                  >
+                    Add Book
+                  </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link
+                    to={"/allBooks"}
+                    className="btn btn-outline border- text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+                  >
+                    All Books
+                  </Link>
                 </li>
                 <li>
-                  <button onClick={logoutUser}>Logout</button>
+                  <Link
+                    to={`/borrowedBook/${user?.email}`}
+                    className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+                  >
+                    Borrowed Books
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    className="btn btn-outline border-deepGreen text-deepGreen hover:text-themeColor font-bold hover:bg-deepGreen"
+                    onClick={logoutUser}
+                  >
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>
