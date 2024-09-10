@@ -23,17 +23,17 @@ const Footer = () => {
       </nav>
       <form>
         <h6 className="footer-title">Newsletter</h6>
-        <fieldset className="form-control w-80">
+        <fieldset className="form-control w-40 lg:w-80">
           <label className="label">
             <span className="label-text">Enter your email address</span>
           </label>
-          <div className="join">
+          <div className="join flex flex-col lg:flex-row">
             <input
               type="text"
               placeholder="username@site.com"
-              className="input input-bordered text-deepGreen join-item"
+              className="input input-bordered text-deepGreen my-2 lg:my-0 lg:join-item"
             />
-            <button className="btn btn-outline border-themeColor hover:border-deepGreen hover:bg-themeColor hover:text-deepGreen text-themeColor join-item">
+            <button className="btn btn-outline border-themeColor hover:border-deepGreen hover:bg-themeColor hover:text-deepGreen text-themeColor my-2 lg:my-0 lg:join-item">
               Subscribe
             </button>
           </div>
