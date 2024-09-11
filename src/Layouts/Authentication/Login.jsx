@@ -17,15 +17,15 @@ const Login = () => {
     try {
       const result = await logInUser(email, password);
       console.log(result?.user);
-      axios
-        .post(
-          `${import.meta.env.VITE_SERVER_URL}/jwt`,
-          { email: result?.user?.email },
-          { withCredentials: true }
-        )
-        .then((res) => {
-          console.log(res.data);
-        });
+      // axios
+      //   .post(
+      //     `${import.meta.env.VITE_SERVER_URL}/jwt`,
+      //     { email: result?.user?.email },
+      //     { withCredentials: true }
+      //   )
+      //   .then((res) => {
+      //     console.log(res.data);
+      //   });
       Swal.fire({
         title: "Logged In",
         text: "You have logged in Succesfully",

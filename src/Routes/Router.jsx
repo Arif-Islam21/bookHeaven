@@ -80,10 +80,7 @@ const router = createBrowserRouter([
             <AllBooks />
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch(`${import.meta.env.VITE_SERVER_URL}/allBooks`, {
-            credentials: "include",
-          }),
+        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/allBooks`),
       },
       {
         path: "/update/:id",

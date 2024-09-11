@@ -50,7 +50,7 @@ const BookDetails = () => {
       );
       console.log(res.data);
       Swal.fire({
-        title: `${res.data.message}`,
+        title: "Book Added Succesfully",
         text: "Book Borrowed Succesfully",
         icon: "success",
       });
@@ -64,7 +64,7 @@ const BookDetails = () => {
   };
   return (
     <div className="hero bg-lightGreen min-h-screen">
-      <div className="hero-content bg-themeColor min-h-[60vh] rounded-lg mx-24 flex-col lg:flex-row">
+      <div className="hero-content bg-themeColor min-h-[60vh] rounded-lg mx-2 my-6 lg:my-0 lg:mx-24 flex-col lg:flex-row">
         <div className="lg:mr-12">
           <img src={photo} className="max-w-xl lg:w-60 rounded-lg shadow-2xl" />
         </div>
@@ -120,7 +120,7 @@ const BookDetails = () => {
                     </div>
                     <input
                       type="text"
-                      placeholder="Type here"
+                      placeholder="not found"
                       defaultValue={user?.displayName}
                       disabled
                       className="input input-bordered w-full max-w-xs"
