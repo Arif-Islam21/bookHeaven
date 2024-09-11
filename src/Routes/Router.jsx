@@ -11,6 +11,7 @@ import BookDetails from "../Pages/BookDetails/BookDetails";
 import BorrowedBook from "../Pages/BorrowedBook/BorrowedBook";
 import AllBooks from "../Pages/AllBooks/AllBooks";
 import UpdateBook from "../Pages/Update/UpdateBook";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +80,10 @@ const router = createBrowserRouter([
             <AllBooks />
           </PrivateRoute>
         ),
-        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/allBooks`),
+        loader: () =>
+          fetch(`${import.meta.env.VITE_SERVER_URL}/allBooks`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/update/:id",

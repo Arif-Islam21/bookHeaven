@@ -3,6 +3,7 @@ import AllBooksCard from "./AllBooksCard";
 
 const AllBooks = () => {
   const data = useLoaderData();
+
   return (
     <div className="my-12">
       <div className="text-center my-8">
