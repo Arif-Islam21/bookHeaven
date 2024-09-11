@@ -6,7 +6,10 @@ const CategoryCard = ({ book }) => {
     <div className="avatar flex flex-col p-4">
       <div className=" p-3 bg-themeColor  rounded-full ">
         <div className=" lg:p-10 p-4 border-2  border-dashed border-deepGreen  rounded-full">
-          <img className="rounded-lg p-4 max-h-40 w-auto" src={photo} />
+          <img
+            className="lg:rounded-lg rounded-full  p-4 lg:max-h-40 max-h-[35vh] w-auto"
+            src={photo}
+          />
         </div>
       </div>
       <Link

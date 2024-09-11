@@ -21,12 +21,12 @@ const BookCategories = () => {
   // console.log(bookData);
 
   return (
-    <div className="bg-lightGreen  px-24 py-12 my-16 min-h-[60vh]">
+    <div className="bg-lightGreen  lg:px-24 px-4 py-3 lg:py-12 my-16 min-h-[60vh]">
       <div className="">
         <h1 className="text-xl lg:text-4xl text-themeColor text-center">
           Top Categorys Books
         </h1>
-        <div className=" lg:px-8 lg:py-4 lg:pt-8">
+        <div className=" lg:px-8 px-2 lg:py-4 lg:pt-8">
           {bookData.length && (
             <Swiper
               // install Swiper modules
