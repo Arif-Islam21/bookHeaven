@@ -22,7 +22,7 @@ const BorrowCard = ({ card, borrowData, setBorrowData }) => {
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure className="border-b-2 border-deepGreen">
-        <img className="py-8 px-2" src={photo} alt={category} />
+        <img className="py-8 max-h-[40vh] px-2" src={photo} alt={category} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{bookName}</h2>
