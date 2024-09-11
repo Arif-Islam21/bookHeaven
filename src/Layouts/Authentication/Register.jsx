@@ -2,19 +2,30 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import logo from "/bookHeaven.svg";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
   const { registerUser, user, setUser } = useAuth();
   const onSubmit = async (formData) => {
     const { email, password, name, photo } = formData;
-    try {
-      const createdUser = await registerUser(email, password);
-      console.log(createdUser.user);
-      setUser({ ...createdUser?.user, photoURL: photo, displayName: name });
-      console.log(user);
-    } catch (error) {
-      console.error(error);
+    const regex =
+      /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;"'|\\,.<>\/?~`-]).{6,}$/;
+    if (regex.test(password)) {
+      try {
+        const createdUser = await registerUser(email, password);
+        console.log(createdUser.user);
+        setUser({ ...createdUser?.user, photoURL: photo, displayName: name });
+        console.log(user);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      Swal.fire({
+        title: "Enter Strong Password",
+        text: "there is something wrong with password",
+        icon: "warning",
+      });
     }
   };
 
