@@ -1,10 +1,14 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import logo from "/bookHeaven.svg";
-import { Link } from "react-router-dom";
+import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state || "/";
+
   const { register, handleSubmit } = useForm();
   const { registerUser, user, setUser } = useAuth();
   const onSubmit = async (formData) => {
@@ -17,8 +21,19 @@ const Register = () => {
         console.log(createdUser.user);
         setUser({ ...createdUser?.user, photoURL: photo, displayName: name });
         console.log(user);
+        Swal.fire({
+          title: "Registered",
+          text: "You have registered Succesfully",
+          icon: "success",
+        });
+        navigate(from, { replace: true });
       } catch (error) {
         console.error(error);
+        Swal.fire({
+          title: "Not registered",
+          text: `${error.message.split("/")[1].replace(")", "")}`,
+          icon: "question",
+        });
       }
     } else {
       Swal.fire({
