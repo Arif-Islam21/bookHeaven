@@ -37,7 +37,7 @@ const Login = () => {
       console.error(error);
       Swal.fire({
         title: "Not logged in",
-        text: "there is something wrong",
+        text: `${error.message.split("/")[1].replace(")", "")}`,
         icon: "question",
       });
     }
