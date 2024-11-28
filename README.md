@@ -26,3 +26,4 @@ Libraries used:
 8. react rating
 9. sweet alert
 10. swiper slider
+11.Axios interceptor
